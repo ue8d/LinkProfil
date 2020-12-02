@@ -17,8 +17,8 @@
 
 						$table->increments('id');
 						$table->bigInteger('user_id')->nullable()->unsigned();
-						$table->integer('link_name')->nullable();
-						$table->integer('link')->nullable();
+						$table->string('link_name')->nullable();
+						$table->string('link')->nullable();
                         $table->timestamps();
 
 
