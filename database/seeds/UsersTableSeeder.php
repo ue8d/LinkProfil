@@ -14,7 +14,9 @@ class UsersTableSeeder extends Seeder
     {
         for ($i = 1; $i <= 10; $i++) {
             User::create([
+                'screen_name'           => 'テスト' .$i,
                 'name'           => 'TEST' .$i,
+                'profile_image'  => 'https://placehold.jp/50x50.png',
                 'email'          => 'test' .$i .'@test.com',
                 'password'       => Hash::make('12345678'),
                 'remember_token' => str_random(10),
