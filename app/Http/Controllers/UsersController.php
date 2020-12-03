@@ -16,4 +16,14 @@ class UsersController extends Controller
             'all_users'  => $all_users
         ]);
     }
+    //ユーザー詳細画面の表示
+    public function show(User $user)
+    {
+        $links = $user->getUserLinks(auth()->user()->id);
+
+        return view('users.show', [
+            'user'      => $user,
+            'user_links'    => $links
+        ]);
+    }
 }
