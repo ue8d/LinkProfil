@@ -9,8 +9,8 @@
                         <div class="card-haeder p-3 w-100 d-flex">
                             <img src="{{ asset('storage/profile_image/' .$user->profile_image) }}" class="rounded-circle" width="50" height="50">
                             <div class="ml-2 d-flex flex-column">
-                                <p class="mb-0">＠{{ $user->name }}</p>
-                                <a href="{{ url('users/' .$user->id) }}" class="text-secondary">{{ $user->screen_name }}</a>
+                                <p class="mb-0">{{ $user->screen_name }}</p>
+                                <a href="{{ url('users/' .$user->id) }}" class="text-secondary">＠{{ $user->name }}</a>
                             </div>
                         </div>
                     </div>
