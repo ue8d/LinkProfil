@@ -10,14 +10,19 @@
                         <img src="{{ asset('storage/profile_image/' .$user->profile_image) }}" class="rounded-circle" width="100" height="100">
                         <div class="mt-3 d-flex flex-column">
                             <h4 class="mb-0 font-weight-bold">{{ $user->screen_name }}</h4>
-                            <span class="text-secondary">{{ $user->name }}</span>
+                            <span class="text-secondary">＠{{ $user->name }}</span>
                         </div>
                     </div>
                     <div class="p-3 d-flex flex-column justify-content-between">
-                        <div class="d-flex">
-                            <div>
+                        <div class="d-flex justify-content-end">
+                            <div class="p-2 d-flex flex-column align-items-center">
                                 @if ($user->id === Auth::user()->id)
                                     <a href="{{ url('users/' .$user->id .'/edit') }}" class="btn btn-primary">プロフィールを編集する</a>
+                                @endif
+                            </div>
+                            <div class="p-2 d-flex flex-column align-items-center">
+                                @if ($user->id === Auth::user()->id)
+                                    <a href="{{ url('links/create') }}" class="btn btn-primary">リンクを追加する</a>
                                 @endif
                             </div>
                         </div>
