@@ -14,9 +14,15 @@ class UserLinksController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(UserLink $userLink)
     {
-        //
+        $user = auth()->user();
+        $linkLists = $userLink->getUserLinks($user->id);
+
+        return view('links.index', [
+            'user'      => $user,
+            'linkLists' => $linkLists
+        ]);
     }
 
     /**

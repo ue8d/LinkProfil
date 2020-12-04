@@ -24,6 +24,6 @@ Route::group(['middleware' => 'auth'], function() {
 
     // ユーザ関連
     Route::resource('users', 'UsersController', ['only' => ['index', 'show', 'edit', 'update']]);
-    // ツイート関連
+    // リンク関連
     Route::resource('links', 'UserLinksController', ['only' => ['index', 'create', 'store', 'show', 'edit', 'update', 'destroy']]);
 });

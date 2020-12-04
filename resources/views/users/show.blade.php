@@ -25,6 +25,11 @@
                                     <a href="{{ url('links/create') }}" class="btn btn-primary">リンクを追加する</a>
                                 @endif
                             </div>
+                            <div class="p-2 d-flex flex-column align-items-center">
+                                @if ($user->id === Auth::user()->id)
+                                    <a href="{{ url('links/') }}" class="btn btn-primary">リンクを編集する</a>
+                                @endif
+                            </div>
                         </div>
                         <div class="d-flex justify-content-end">
                             <div class="p-2 d-flex flex-column align-items-center">
@@ -46,7 +51,11 @@
                 <div class="card">
                     <ul class="list-group list-group-flush">
                         @foreach ($links as $link)
-                        <a href="{{ $link->link }}"><li class="list-group-item text-center">{{ $link->link_name }}</li></a>
+                        <a href="{{ $link->link }}">
+                            <li class="list-group-item text-center">
+                                {{ $link->link_name }}
+                            </li>
+                        </a>
                         @endforeach
                     </ul>
                 </div>
