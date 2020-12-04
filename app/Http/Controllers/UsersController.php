@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\UserLink;
 
 class UsersController extends Controller
 {
@@ -17,13 +18,23 @@ class UsersController extends Controller
         ]);
     }
     //ユーザー詳細画面の表示
-    public function show(User $user)
+    public function show(User $user, UserLink $userLink)
     {
-        $links = $user->getUserLinks(auth()->user()->id);
+        //リンク情報の取得
+        $links = $userLink->getUserLinks($user->id);
+
+        //最終更新日
+        $lastUpdateDate = $user->updated_at;
+        foreach($links as $link) {
+            if ($link->updated_at > $lastUpdateDate){
+                $lastUpdateDate = $link->updated_at;
+            }
+        }
 
         return view('users.show', [
             'user'      => $user,
-            'user_links'    => $links
+            'links'    => $links,
+            'lastUpdateDate'  => $lastUpdateDate
         ]);
     }
 }
