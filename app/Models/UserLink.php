@@ -17,4 +17,14 @@ class UserLink extends Model
     {
         return $this->all()->where('user_id', '=', $user_id);
     }
+
+    public function linkStore(Int $user_id, Array $data)
+    {
+        $this->user_id = $user_id;
+        $this->link_name = $data['link_name'];
+        $this->link = $data['link'];
+        $this->save();
+
+        return;
+    }
 }
