@@ -27,4 +27,16 @@ class UserLink extends Model
 
         return;
     }
+
+    public function getEditLink(Int $user_id, Int $userLink_id)
+    {
+        return $this->where('user_id', $user_id)->where('id', $userLink_id)->first();
+    }
+
+    public function linkUpdate(Int $link_id, Array $data)
+    {
+        $this->where('id',$link_id)->update(['link_name'=>$data['link_name'],'link'=>$data['link'],]);
+
+        return;
+    }
 }

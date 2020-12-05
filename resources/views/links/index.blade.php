@@ -17,14 +17,11 @@
                         </div>
                         <div class="card-footer py-1 d-flex justify-content-end bg-white">
                             <div class="d-flex justify-content-end flex-grow-1">
-                                <form method="POST" action="{{ url('links/' .$linkList->id .'/edit') }}" class="mb-0">
+                                <a href="{{ url('links/' .$linkList->id .'/edit') }}" class="btn">編集</a>
+                                <form method="POST" action="{{ url('links/' .$linkList->id) }}">
                                     @csrf
-                                    <button type="submit" class="dropdown-item btn">編集</button>
-                                </form>
-
-                                <form method="POST" action="{{ url('links/' .$linkList->id) }}" class="mb-0">
-                                    @csrf
-                                    <button type="submit" class="dropdown-item del-btn">削除</button>
+                                    @method('DELETE')
+                                    <button type="submit" class="btn">削除</button>
                                 </form>
                             </div>
                         </div>
@@ -34,7 +31,7 @@
         @endif
     </div>
     <div class="my-4 d-flex justify-content-center">
-        {{-- {{ $linkLists->links() }} --}}
+        {{-- 広告スペース予定 --}}
     </div>
 </div>
 @endsection

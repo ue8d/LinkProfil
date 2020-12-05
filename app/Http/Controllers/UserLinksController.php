@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Validation\Rule;
 use App\Models\UserLink;
 
 class UserLinksController extends Controller
@@ -77,9 +76,19 @@ class UserLinksController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id, UserLink $userLink)
     {
-        //
+        $user = auth()->user();
+        $links = $userLink->getEditLink($user->id, $id);
+
+        if (!isset($userLink)) {
+            return redirect('links');
+        }
+
+        return view('links.edit', [
+            'user'   => $user,
+            'links' => $links
+        ]);
     }
 
     /**
@@ -89,9 +98,18 @@ class UserLinksController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, UserLink $userLink, $id)
     {
-        //
+        $data = $request->all();
+        $validator = Validator::make($data, [
+            'link_name' => ['required', 'string', 'max:255'],
+            'link'      => ['required', 'string', 'max:255']
+        ]);
+
+        $validator->validate();
+        $userLink->linkUpdate($id, $data);
+
+        return redirect('links');
     }
 
     /**
