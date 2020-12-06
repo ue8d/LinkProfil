@@ -3,21 +3,37 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-8 mb-3">
             <div class="card">
-                <div class="card-header">Dashboard</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
+                <div class="d-inline-flex">
+                    <div class="p-3 d-flex flex-column">
+                        <img src="{{ asset('storage/profile_image/' .$userInfo->profile_image) }}" class="rounded-circle" width="100" height="100">
+                        <div class="mt-3 d-flex flex-column">
+                            <h4 class="mb-0 font-weight-bold">{{ $userInfo->screen_name }}</h4>
+                            <span class="text-secondary">＠{{ $userInfo->name }}</span>
                         </div>
-                    @endif
-
-                    You are logged in!
+                    </div>
+                    <div class="p-3 d-flex flex-column justify-content-between">
+                    </div>
                 </div>
             </div>
         </div>
+        {{-- リンク一覧 --}}
+        @if (isset($links))
+            <div class="col-md-8 mb-3">
+                <div class="card">
+                    <ul class="list-group list-group-flush">
+                        @foreach ($links as $link)
+                        <a href="{{ $link->link }}">
+                            <li class="list-group-item text-center">
+                                {{ $link->link_name }}
+                            </li>
+                        </a>
+                        @endforeach
+                    </ul>
+                </div>
+            </div>
+        @endif
     </div>
 </div>
 @endsection

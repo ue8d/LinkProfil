@@ -17,8 +17,6 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-
 // ログイン状態
 Route::group(['middleware' => 'auth'], function() {
 
@@ -27,3 +25,5 @@ Route::group(['middleware' => 'auth'], function() {
     // リンク関連
     Route::resource('links', 'UserLinksController', ['only' => ['index', 'create', 'store', 'show', 'edit', 'update', 'destroy']]);
 });
+
+Route::get('/{userId}', 'HomeController@index')->name('home');
