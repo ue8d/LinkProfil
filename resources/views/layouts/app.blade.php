@@ -56,7 +56,7 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ url('/users/'. Auth::id()) }}">
+                                    <a class="dropdown-item" href="{{ url(Auth::user()->name) }}">
                                         マイページ
                                     </a>
 
