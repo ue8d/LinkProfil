@@ -14,6 +14,54 @@
                         </div>
                     </div>
                     <div class="p-3 d-flex flex-column justify-content-between">
+                        @guest
+                        <div class="d-flex justify-content-end">
+                            <div class="p-2 d-flex flex-column align-items-center">
+                            </div>
+                            <div class="p-2 d-flex flex-column align-items-center">
+                            </div>
+                            <div class="p-2 d-flex flex-column align-items-center">
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-end">
+                            <div class="p-2 d-flex flex-column align-items-center">
+                                <p class="font-weight-bold">最終更新日</p>
+                                <span>{{ $lastUpdateDate }}</span>
+                            </div>
+                            <div class="p-2 d-flex flex-column align-items-center">
+                                <p class="font-weight-bold">アカウント登録日</p>
+                                <span>{{ $created_at }}</span>
+                            </div>
+                        </div>
+                        @else
+                        <div class="d-flex justify-content-end">
+                            <div class="p-2 d-flex flex-column align-items-center">
+                                @if ($userInfo->id === Auth::user()->id)
+                                    <a href="{{ url('users/' .$userInfo->id .'/edit') }}" class="btn btn-primary">プロフィールを編集する</a>
+                                @endif
+                            </div>
+                            <div class="p-2 d-flex flex-column align-items-center">
+                                @if ($userInfo->id === Auth::user()->id)
+                                    <a href="{{ url('links/create') }}" class="btn btn-primary">リンクを追加する</a>
+                                @endif
+                            </div>
+                            <div class="p-2 d-flex flex-column align-items-center">
+                                @if ($userInfo->id === Auth::user()->id)
+                                    <a href="{{ url('links/') }}" class="btn btn-primary">リンクを編集する</a>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="d-flex">
+                            <div class="p-2 d-flex flex-column align-items-center">
+                                <p class="font-weight-bold">最終更新日</p>
+                                <span>{{ $lastUpdateDate }}</span>
+                            </div>
+                            <div class="p-2 d-flex flex-column align-items-center">
+                                <p class="font-weight-bold">アカウント登録日</p>
+                                <span>{{ $created_at }}</span>
+                            </div>
+                        </div>
+                        @endguest
                     </div>
                 </div>
             </div>

@@ -30,6 +30,8 @@ class HomeController extends Controller
         $links = $userLink->getUserLinks($data['userInfo']->id);
         $data['links'] = $links;
 
+        $data['created_at'] = substr($data['userInfo']->created_at, 0, -3);
+
         //最終更新日
         $lastUpdateDate = $data['userInfo']->updated_at;
         foreach($links as $link) {
@@ -37,6 +39,8 @@ class HomeController extends Controller
                 $lastUpdateDate = $link->updated_at;
             }
         }
+        $lastUpdateDate = substr($lastUpdateDate, 0, -3);
+
         $data['lastUpdateDate'] = $lastUpdateDate;
         return view('home', $data);
     }
