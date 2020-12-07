@@ -31,7 +31,7 @@
                                 @endif
                             </div>
                         </div>
-                        <div class="d-flex justify-content-end">
+                        <div class="d-flex">
                             <div class="p-2 d-flex flex-column align-items-center">
                                 <p class="font-weight-bold">最終更新日</p>
                                 <span>{{ $lastUpdateDate->format('Y-m-d H:i') }}</span>
