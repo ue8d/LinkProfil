@@ -24,6 +24,7 @@ Route::group(['middleware' => 'auth'], function() {
     Route::resource('users', 'UsersController', ['only' => ['index', 'show', 'edit', 'update']]);
     // リンク関連
     Route::resource('links', 'UserLinksController', ['only' => ['index', 'create', 'store', 'show', 'edit', 'update', 'destroy']]);
+    Route::get('/dashboard', 'HomeController@index');
 });
 
-Route::get('/{userId}', 'HomeController@index')->name('home');
+Route::get('/{userId}', 'HomeController@show')->name('home');

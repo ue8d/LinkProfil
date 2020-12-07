@@ -23,7 +23,12 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index($userId, UserLink $userLink)
+    public function index()
+    {
+        return view('dashboard');
+    }
+
+    public function show($userId, UserLink $userLink)
     {
         $currentUserInfo = DB::table('users')->where('name', $userId)->first();
         $data['userInfo'] = $currentUserInfo;
