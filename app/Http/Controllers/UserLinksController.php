@@ -56,7 +56,7 @@ class UserLinksController extends Controller
         $validator->validate();
         $userLink->linkStore($user->id, $data);
 
-        return redirect('users/'.$user->id);
+        return redirect($user->name);
     }
 
     /**
