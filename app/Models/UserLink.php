@@ -39,4 +39,9 @@ class UserLink extends Model
 
         return;
     }
+
+    public function linkDestroy(Int $user_id, Int $link_id)
+    {
+        return $this->where('user_id', $user_id)->where('id', $link_id)->delete();
+    }
 }

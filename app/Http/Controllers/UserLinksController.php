@@ -118,8 +118,11 @@ class UserLinksController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(UserLink $userLink, $id)
     {
-        //
+        $user = auth()->user();
+        $userLink->linkDestroy($user->id, $id);
+
+        return back();
     }
 }
