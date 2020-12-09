@@ -25,7 +25,10 @@ class Hankaku implements Rule
      */
     public function passes($attribute, $value)
     {
-        return preg_match('/^[a-zA-Z0-9]+$/', $value);
+        if (preg_match('/^[a-zA-Z0-9]+$/', $value)) {
+            return strlen($value) >= 4 ? true : false;
+        }
+        return false;
     }
 
     /**
@@ -35,6 +38,6 @@ class Hankaku implements Rule
      */
     public function message()
     {
-        return ':attribute は半角英数字で入力してください';
+        return 'アカウントIDは半角英数字・4文字以上で入力してください';
     }
 }
