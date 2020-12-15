@@ -26,7 +26,7 @@ class Hankaku implements Rule
     public function passes($attribute, $value)
     {
         $reserveds = array("admin", "users", "links", "dashboard");
-        if (preg_match('/^[a-zA-Z0-9]+$/', $value)) {
+        if (preg_match('/^[a-zA-Z_0-9]+$/', $value)) {
             foreach ($reserveds as $reserved) {
                 if ($reserved == $value){
                     return false;
