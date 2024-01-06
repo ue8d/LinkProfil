@@ -1,4 +1,4 @@
-# LinkProfil
+# LinkProfil(archived)
 ![topimage](https://ue8d.com/image/LinkProfil/top.png "top")
 
 TwitterやInstagramなど一つしかリンクを貼れないようなサービスに自分のリンクを複数紹介したいときに使えるサイトです。
